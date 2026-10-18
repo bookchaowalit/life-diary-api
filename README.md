@@ -30,5 +30,6 @@ npm install && railway config apply && railway up --ci --service diary-api
 railway scale --service diary-api asia-southeast1-eqsg3a=1 us-east4-eqdc4a=0   # next to Neon and the platform
 ```
 
-Railway variables: `DIARY_DB_MODE=hosted`, `DIARY_DB_URL_API`,
+Railway variables: `SENTRY_DSN` (error reporting; unset = off, see
+`src/cellkit/_sentry.py`), `DIARY_DB_MODE=hosted`, `DIARY_DB_URL_API`,
 `DIARY_JWT_PUBLIC_KEY_PEM`, `DIARY_JWT_ISSUER`, `EMPIRE_PLATFORM_URL`.
