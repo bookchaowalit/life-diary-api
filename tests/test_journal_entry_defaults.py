@@ -1,6 +1,5 @@
 """Defaults of a journal entry and the rules that are NOT constraints."""
 
-import pytest
 from diary_helpers import ENTRIES, create
 
 
@@ -55,10 +54,5 @@ def test_an_entry_keeps_the_old_id_when_it_is_imported(client, owner):
     assert create(client, owner, legacy_id=777).status_code == 409
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="cellkit app.write does not catch NumericValueOutOfRange: a mood above "
-    "2147483647 ends in a 500 instead of a 422",
-)
 def test_a_mood_above_the_integer_range_is_refused_not_a_server_error(client, owner):
     assert create(client, owner, mood=2**31).status_code == 422
